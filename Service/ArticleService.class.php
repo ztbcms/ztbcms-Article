@@ -10,6 +10,7 @@ namespace Article\Service;
 
 use System\Service\BaseService;
 use Article\Model\CommonlyArticleModel;
+use Article\Service\ArticleGroupService;
 
 class ArticleService extends BaseService
 {
@@ -78,6 +79,7 @@ class ArticleService extends BaseService
         $res['content'] = htmlspecialchars_decode($res['content']);
         $res['inputtime_name'] = date('Y-m-d H:i',$res['inputtime']);
         $res['updatetime_name'] = date('Y-m-d H:i',$res['updatetime']);
+        $res['group_id'] = ArticleGroupService::getPid($res['group_id'],true);
         return createReturn(true,$res);
     }
 

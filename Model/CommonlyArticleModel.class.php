@@ -29,6 +29,7 @@ class CommonlyArticleModel extends RelationModel
         if(!$post['about']) return createReturn(false,'','文章简介不能为空');
         if(!$post['group_id']) return createReturn(false,'','文章分类不能为空');
         if(!$post['content']) return createReturn(false,'','文章内容不能为空');
+        $post['group_id'] = end($post['group_id']);
         $content['cover_url'] = $post['cover_url'];
         $content['type'] = $post['type'];
         $content['listorder'] = $post['listorder'];
@@ -50,13 +51,8 @@ class CommonlyArticleModel extends RelationModel
      * @return string
      */
     function getGroupName($group_id){
-        if($group_id == '1'){
-            return '抢鲜须知';
-        } else if($group_id == '2'){
-            return '高手进阶';
-        } else if($group_id == '3'){
-            return '拉新教程';
-        }
+        $CommonlyArticleGroupModel = new CommonlyArticleGroupModel();
+        return $CommonlyArticleGroupModel->where(['id'=>$group_id])->getField('title');
     }
 
 }

@@ -24,7 +24,27 @@ return array(
         "parameter" => "type=default",
         //子菜单列表
         "child" => array(
-
+            array(
+                "route" => "Article/ArticleGroup/groupList",
+                "type" => 1,
+                "status" => 1,
+                "name" => "文章一级分类",
+                "parameter" => "type=default&is_cover=1",
+            ),
+            array(
+                "route" => "Article/ArticleGroup/groupList3",
+                "type" => 1,
+                "status" => 1,
+                "name" => "文章三级分类",
+                "parameter" => "type=default&is_cover=1",
+            ),
+            array(
+                "route" => "Article/Article/articleList",
+                "type" => 1,
+                "status" => 1,
+                "name" => "文章管理",
+                "parameter" => "type=default",
+            )
         ),
     ),
     array(
